@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slime Chess</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage">
+    <div id="board" class="board"></div>
+  </main>
+
+  <!-- 화면에 남은 UI는 이 버튼 두 개뿐 -->
+  <nav class="controls" aria-label="Game controls">
+    <button id="undoBtn" class="icon-btn" type="button" aria-label="Undo" title="Undo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+    </button>
+    <button id="newBtn" class="icon-btn" type="button" aria-label="New game" title="New game">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5A8 8 0 1 1 17.7 6"/><path d="M20 4v6h-6"/></svg>
+    </button>
+  </nav>
+
+  <!-- 눈에는 안 보이고 화면 낭독기만 읽는 상태 문장 -->
+  <p id="srStatus" class="sr-only" aria-live="polite"></p>
+
+  <div id="promo" class="promo" hidden>
+    <div class="promo-box" role="dialog" aria-label="Choose a promotion piece">
+      <p class="label">Promote to</p>
+      <div id="promoChoices" class="promo-choices"></div>
+    </div>
+  </div>
+
+  <div id="gameover" class="gameover" hidden>
+    <div class="gameover-box" role="dialog" aria-label="Game over">
+      <p id="goLabel" class="label">Checkmate</p>
+      <h2 class="go-title">Game Over</h2>
+      <p class="go-winner"><span id="goDot" class="dot w"></span><span id="goText">You win</span></p>
+      <div class="actions">
+        <button id="goUndo" type="button">Undo</button>
+        <button id="goNew" type="button" class="primary">New Game</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="rules.js"></script>
+  <script src="engine.js"></script>
+  <script src="vendor/three.min.js"></script>
+  <script src="pieces3d.js"></script>
+  <script src="board3d.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
